@@ -10,7 +10,7 @@ WORK_MIN = 3
 SHORT_BREAK_MIN = 1
 LONG_BREAK_MIN = 2
 reps = 0
-
+check_marks = ""
 # ---------------------------- TIMER RESET ------------------------------- #
 
 # ---------------------------- TIMER MECHANISM ------------------------------- #
@@ -41,7 +41,10 @@ def count_down(count):
         window.after(1000, count_down, count -1)
     else:
         start_timer()
-
+        if reps % 2 == 0:
+            global  check_marks
+            check_marks += check_mark
+            check_label.config(text=check_marks)
 
 # ---------------------------- UI SETUP ------------------------------- #
 #window setup
@@ -65,7 +68,7 @@ timer_label = Label(text="Timer", font=(FONT_NAME, 35, "bold"), bg=YELLOW, fg=GR
 timer_label.grid(column=1, row=0)
 
 #check label
-check_label = Label(text=check_mark, font=(FONT_NAME, 28, "bold"),bg=YELLOW, fg=GREEN)
+check_label = Label(font=(FONT_NAME, 28, "bold"),bg=YELLOW, fg=GREEN)
 check_label.grid(column=1, row=3)
 
 #Start Button
